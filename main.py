@@ -1,6 +1,4 @@
 import os
-import time
-
 import customtkinter as ctk
 from PIL import Image
 
@@ -83,7 +81,8 @@ class App(ctk.CTk):
         # create entry box and main button
         self.entry = ctk.CTkEntry(self, placeholder_text="enter manual command")
         self.entry.grid(row=3, column=1, columnspan=2, padx=(20, 0), pady=(10, 20), sticky="nsew")
-        self.main_button_1 = ctk.CTkButton(master=self, fg_color="transparent", border_width=2, text_color=("gray10", "#DCE4EE"))
+        self.main_button_1 = ctk.CTkButton(master=self, fg_color="transparent", border_width=2,
+                                           text_color=("gray10", "#DCE4EE"))
         self.main_button_1.grid(row=3, column=3, padx=(20, 20), pady=(10, 20), sticky="nsew")
 
         # create display textbox
@@ -108,7 +107,7 @@ class App(ctk.CTk):
         self.progressbar_1.configure(mode="indeterminnate")
 
         self.main_button_1.configure(text='execute')
-        self. main_button_1.configure(command=self.button_event)
+        self. main_button_1.configure(command=self.execute_button_event)
         # self.textbox.configure(state="disabled")
 
     # noinspection PyMethodMayBeStatic
@@ -125,7 +124,7 @@ class App(ctk.CTk):
         new_scaling_float = int(new_scaling.replace("%", "")) / 100
         ctk.set_widget_scaling(new_scaling_float)
 
-    def button_event(self):
+    def execute_button_event(self):
         cli_command = self.entry.get()
         self.textbox.configure(state="normal")
         if cli_command:
@@ -143,10 +142,6 @@ class App(ctk.CTk):
     # noinspection PyMethodMayBeStatic
     def resized(self, winfo):
         pass
-
-
-
-
 
 
 if __name__ == "__main__":
